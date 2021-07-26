@@ -1,0 +1,231 @@
+:root {
+  --bg: linear-gradient(to bottom right, #474545,#242527);
+  --red: linear-gradient(to bottom right, #ff4949, #ac0000);
+  --blue: linear-gradient(to bottom right, #3EA7FF, #1A6DB1);
+  --white: linear-gradient(to bottom right, #ffffff, #c2c2c2);
+  --font-name: red;
+  --display-font:red;
+  --border-radius: 0.5rem;
+  --transition-button: 0.1s all
+  /* dimensions */;
+  --title-font-size: 1.8rem;
+  --title-button-font-size: 0.75rem;
+  --box-width: 400px;
+  --box-height: 600px;
+  --box-border: 1px solid black;;
+  --box-flex-direction: column;
+  --display-width: 100%;
+  --display-height:25%;
+  --display-history-font-size: 1.5rem;
+  --display-history-align-items: center;
+  --display-result-font-size: 2rem;
+  --buttons-width: 100%;
+  --buttons-height: 75%;
+
+}
+
+.fullscreen {
+  --title-font-size: 1.8vw;
+  --title-button-font-size: 1vw;
+  --box-width: 99%;
+  --box-height: 99%;
+  --box-flex-direction: row;
+  --display-width: 50%;
+  --display-height:100%;
+  --display-history-font-size: 4vw;
+  --display-history-align-items: flex-start;
+  --display-result-font-size: 4vw;
+  --buttons-width: 50%;
+  --buttons-height: 100%;
+}
+
+.fullscreen_v {
+  --title-font-size: 2.5vh;
+  --title-button-font-size: 1vh;
+  --box-width: 99%;
+  --box-height: 99%;
+  --box-flex-direction: column;
+  --display-width: 100%;
+  --display-height:25%;
+  --display-history-font-size: 4vh;
+  --display-history-align-items: flex-start;
+  --display-result-font-size: 4vh;
+  --buttons-width: 100%;
+  --buttons-height: 75%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-image: var(--bg);
+}
+
+main {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.title_button {
+  display: flex;
+  flex-direction: row;
+}
+
+.title {
+  color: whitesmoke;
+  font-family: 'Press Start 2P', cursive;
+  font-size: var(--title-font-size);
+  transition: 0.5s all;
+}
+
+.fullscreen_button {
+  display: flex;
+  align-items: center;
+  font-size: var(--title-button-font-size);
+  background-color: whitesmoke;
+  border-color: transparent;
+  margin-right: 0.27rem;
+  opacity: .7;
+  cursor: pointer;
+}
+
+.fullscreen_button:hover {
+  opacity: 1;
+}
+
+/* calculator */
+
+.box {
+  width: var(--box-width);
+  height: var(--box-height);
+  background: black;
+  border: var(--box-border);
+  display: flex;
+  /* used webkit because it didnt work properly without it when i uploaded it to netlify */
+  -webkit-flex-direction: var(--box-flex-direction);
+  flex-direction: var(--box-flex-direction);
+  transition: 0.5s all;
+}
+
+.display{
+  width: var(--display-width);
+  height: var(--display-height);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: 0.5s all;
+}
+
+.display_history {
+  width: fill;
+  height: 40%;
+  font-weight: 400;
+  color: white;
+  font-size: var(--display-history-font-size);
+  padding: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: var(--display-history-align-items);
+  overflow-y: scroll;
+  transition: 0.5s all;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
+.display_result {
+  width: fill;
+  height: 60%;
+  border: none;
+  font-family: 'Press Start 2P', cursive;
+  color: white;
+  font-size: var(--display-result-font-size);
+  padding: 0.5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: var(--display-history-align-items);
+  overflow: hidden;
+  transition: 0.5s all;
+}
+/* buttons */
+
+.buttons {
+  width: var(--buttons-width);
+  height: var(--buttons-height);
+  
+}
+
+.buttons_first {
+  height: 20%;
+  display: grid;
+  grid-template-columns: 50% 25% 25%;
+}
+
+.buttons_second {
+  display: grid;
+  height: 80%;
+  grid-template-columns: repeat(auto-fill, minmax(25%, 25%));
+}
+
+button {
+  font-family: 'Montserrat', sans-serif;
+  font-size: var(--display-history-font-size);
+  outline-offset: -8px;
+  outline: 2px solid transparent;
+
+}
+
+
+.clear {
+  background-image: var(--red);
+  border: none;
+  box-shadow: 0 0 0 1px black inset;
+  color: white;
+  transition: 0.5s all;
+}
+
+.blue {
+  background-image: var(--blue);
+  font-size: var(--display-history-font-size);
+  border: none;
+  color: white;
+  box-shadow: 0 0 0 1px black inset;
+  transition: 0.5s all;
+}
+
+.white {
+  border: none;
+  font-size: var(--display-history-font-size);
+  background-image: var(--white);
+  box-shadow: 0 0 0 1px black inset;
+  color: black;
+  transition: 0.5s all;
+}
+
+.clear:active, .blue:active {
+  background-image: var(--white);
+  color: black;
+  outline-color: black !important;
+  transition: var(--transition-button);
+}
+
+.white:active {
+  background-image: linear-gradient(to bottom right, #4e4e4e, #000000);
+  color: white;
+  outline-color: white !important;
+  transition: var(--transition-button);
+}
+
+.clear:hover, .blue:hover {
+  outline-color: white;
+}
+
+.white:hover {
+  outline-color: black;
+}
